@@ -37,6 +37,7 @@ class ListItemVendorRouteAdapter(
             var intent1 = Intent(context, DriverRouteMapActivity::class.java)
             intent1.putExtra(Constants.LAT, list[position].lat)
             intent1.putExtra(Constants.LONG, list[position].lang)
+            intent1.putExtra(Constants.IS_ROUTE_MAP_VIEW, false)
             context.startActivity(intent1)
         }
         if (position % 2 == 0) {

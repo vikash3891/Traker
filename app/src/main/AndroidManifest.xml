@@ -79,7 +79,6 @@
             android:name=".view.DriverRouteMapActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".view.DisplayActivity" />
     </application>
 
 </manifest>

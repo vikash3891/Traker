@@ -36,6 +36,7 @@ class Constants {
         const val IN_TIME = "in_time"
         const val CURRENT_DATE = "current_date"
         const val OUT_TIME = "out_time"
+        const val IS_ROUTE_MAP_VIEW = "is_route_map_view"
         var isAdmin = true
     }
 }

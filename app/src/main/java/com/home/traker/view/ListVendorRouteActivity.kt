@@ -69,7 +69,11 @@ class ListVendorRouteActivity : BaseActivity() {
             }
             addDriver.text = "Route Map"
             addDriver.setOnClickListener {
-                startActivity(Intent(this, DisplayActivity::class.java))
+                var intent1 = Intent(this, DriverRouteMapActivity::class.java)
+                intent1.putExtra(Constants.LAT, "0.0")
+                intent1.putExtra(Constants.LONG, "0.0")
+                intent1.putExtra(Constants.IS_ROUTE_MAP_VIEW, true)
+                startActivity(intent1)
             }
         } catch (e: Exception) {
             e.printStackTrace()
