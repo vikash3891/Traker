@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewmodel"
+            type="com.home.traker.model.ListAttendanceModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layoutList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/driveDateValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:padding="@dimen/dp_5"
+                android:gravity="center"
+                android:text="Date"
+                android:textColor="@color/listText"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/driveDateInValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_5"
+                android:text="IN"
+                android:gravity="center"
+                android:textColor="@color/listText"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/driveDateOutValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/dp_5"
+                android:gravity="center"
+                android:text="OUT"
+                android:textColor="@color/listText"
+                android:textSize="@dimen/sp_13"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

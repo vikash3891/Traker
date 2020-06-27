@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewmodel"
+            type="com.home.traker.model.ListItemModel" />
+    </data>
+
+    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/drawable_background_gradient"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp_20"
+        tools:context=".view.RegistrationActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/lytAction"
+                layout="@layout/topbar_layout" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/lytAction"
+                android:layout_marginBottom="@dimen/dp_30"
+                android:overScrollMode="never">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_5"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_10">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="start|center"
+                        android:text="Driver Registration"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/sp_18"
+                        android:textStyle="bold" />
+
+                    <!--NAME-->
+                    <LinearLayout
+                        android:id="@+id/layoutName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dp_2">
+
+                        <TextView
+                            android:id="@+id/textName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:padding="@dimen/dp_5"
+                            android:text="Driver Name"
+                            android:textColor="@color/colorAppGray" />
+
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/editName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/layoutName"
+                        android:fontFamily="@font/roboto"
+                        android:hint="@string/mandatory"
+                        android:imeOptions="actionNext|flagNavigateNext"
+                        android:maxLength="50"
+                        android:padding="@dimen/dp_10"
+                        android:singleLine="true"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/sp_16" />
+
+                    <!--Mobile Number-->
+                    <LinearLayout
+                        android:id="@+id/layoutMobileNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dp_2">
+
+                        <TextView
+                            android:id="@+id/textMobileNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:padding="@dimen/dp_5"
+                            android:text="@string/mobile_number"
+                            android:textColor="@color/colorAppGray" />
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/editMobileNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:hint="@string/mandatory"
+                        android:imeOptions="actionNext"
+                        android:inputType="phone"
+                        android:maxLength="10"
+                        android:padding="@dimen/dp_10"
+                        android:singleLine="true"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/sp_16" />
+
+                    <!--Details-->
+                    <LinearLayout
+                        android:id="@+id/layoutDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dp_2">
+
+                        <TextView
+                            android:id="@+id/driverDetails"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:padding="@dimen/dp_5"
+                            android:text="Details"
+                            android:textColor="@color/colorAppGray" />
+
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/editDriverDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:hint="@string/mandatory"
+                        android:imeOptions="actionNext|flagNavigateNext"
+                        android:maxLength="200"
+                        android:maxLines="3"
+                        android:padding="@dimen/dp_10"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/sp_16" />
+
+                    <!--Password-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_2">
+
+                        <TextView
+                            android:id="@+id/txtPass"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:padding="@dimen/dp_5"
+                            android:text="@string/password"
+                            android:textColor="@color/colorAppGray" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/txtPass"
+                            app:hintEnabled="false"
+                            app:passwordToggleEnabled="true">
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/editPassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:hint="@string/mandatory"
+                                android:imeOptions="actionNext"
+                                android:inputType="textPassword"
+                                android:maxLength="16"
+                                android:singleLine="true"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="@dimen/sp_16" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.8dp"
+                        android:layout_marginStart="@dimen/dp_6"
+                        android:layout_marginTop="@dimen/dp_3"
+                        android:layout_marginEnd="@dimen/dp_6"
+                        android:layout_marginBottom="@dimen/dp_3"
+                        android:background="@color/colorLightGray100" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnSubmitRegister"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_40"
+                        android:layout_margin="@dimen/dp_10"
+                        android:background="@drawable/drawable_round_corner_blue"
+                        android:fontFamily="@font/roboto"
+                        android:text="Register"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/sp_16" />
+                </LinearLayout>
+
+            </ScrollView>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewmodel"
+            type="com.home.traker.model.ListItemModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:background="@color/colorComparePreviousYear"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp_20">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/topbar"
+                layout="@layout/topbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/punchDetails"
+                android:layout_marginBottom="@dimen/dp_50"
+                android:gravity="center"
+                android:text="ACTIVITY LOG"
+                android:textAllCaps="true"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/sp_20"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/punchDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="#efd6da"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/dp_40"
+                android:paddingBottom="@dimen/dp_40">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_20"
+                    android:gravity="center"
+                    android:text="Attendance Daily Base"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_18"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textPunchIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_marginEnd="@dimen/dp_20"
+                    android:layout_marginBottom="@dimen/dp_20"
+                    android:background="@drawable/drawable_punch_in"
+                    android:gravity="center"
+                    android:padding="@dimen/dp_20"
+                    android:text="PUNCH IN"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_22"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textPunchOut"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_marginEnd="@dimen/dp_20"
+                    android:layout_marginBottom="@dimen/dp_20"
+                    android:background="@drawable/drawable_punch_out"
+                    android:gravity="center"
+                    android:padding="@dimen/dp_20"
+                    android:text="PUNCH OUT"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/sp_22"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textLogout"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/dp_20"
+                android:background="@drawable/drawable_round_corner_red"
+                android:gravity="center"
+                android:padding="@dimen/dp_5"
+                android:text="Logout"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/sp_16"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

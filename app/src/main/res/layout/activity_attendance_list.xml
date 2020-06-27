@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewmodel"
+            type="com.home.traker.model.ListAttendanceModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/drawable_background_gradient"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp_20">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/topbar"
+                layout="@layout/topbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/topbar"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/layoutSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/dp_15"
+                    android:paddingBottom="@dimen/dp_15">
+
+                    <TextView
+                        android:id="@+id/driverActivityLogLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginEnd="@dimen/dp_15"
+                        android:padding="@dimen/dp_5"
+                        android:text="Driver Activity Log"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/sp_14"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/addDriver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="@dimen/dp_15"
+                        android:padding="@dimen/dp_5"
+                        android:text="@string/add_more_driver"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/sp_13"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layoutNameCalendar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorListBackground"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/dp_10"
+                    android:paddingTop="@dimen/dp_10"
+                    android:paddingBottom="@dimen/dp_10">
+
+                    <TextView
+                        android:id="@+id/driverName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginEnd="@dimen/dp_15"
+                        android:padding="@dimen/dp_5"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/monthYear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="@dimen/dp_15"
+                        android:background="@drawable/drawable_round_corner_blue"
+                        android:paddingStart="@dimen/dp_15"
+                        android:paddingTop="@dimen/dp_5"
+                        android:paddingEnd="@dimen/dp_15"
+                        android:paddingBottom="@dimen/dp_5"
+                        android:text="Jan - 2020"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutListHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    android:background="@color/colorPrimaryDark"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/driveDate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:padding="@dimen/dp_5"
+                        android:text="Date"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/sp_15"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/driveDateIn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/dp_5"
+                        android:text="In"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/sp_15"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/driveDateOut"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/dp_5"
+                        android:text="Out"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/sp_15"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layoutList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/listRecyc"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/dp_5" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleLarge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textSize="@dimen/sp_18"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layoutMap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/map"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/dp_5"
+                        android:orientation="vertical" />
+
+                    <fragment
+                        android:id="@+id/supportMap"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:context="spartons.com.frisbeeGo.fragments.MapFragment" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <include
+                layout="@layout/bottombar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

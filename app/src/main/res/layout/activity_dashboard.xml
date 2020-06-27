@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewmodel"
+            type="com.home.traker.model.ListItemModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="@drawable/drawable_background_gradient"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp_20">
+
+
+        <include
+            android:id="@+id/topbar"
+            layout="@layout/topbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50" />
+
+        <GridView
+            android:id="@+id/gvDashboard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dp_5"
+            android:columnWidth="150dp"
+            android:horizontalSpacing="@dimen/dp_10"
+            android:numColumns="auto_fit"
+            android:verticalSpacing="@dimen/dp_10" />
+
+    </RelativeLayout>
+</layout>

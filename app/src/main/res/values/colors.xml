@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1A77AA</color>
+    <color name="colorPrimaryDark">#1976AA</color>
+    <color name="colorAccent">#36a2fc</color>
+    <color name="colorMain">#CDECFF</color>
+    <color name="colorListBackground">#cfe4f7</color>
+
+    <color name="colorAppGray">#4a4a4a</color>
+    <color name="colorLightGray">#d1d4e2</color>
+    <color name="colorLightGray100">#77E4E5EB</color>
+    <color name="colorDarkGray">#AEAEAF</color>
+    <color name="colorLightBlack">#302e2f</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorWhite">#ffffff</color>
+
+    <color name="colorWhiteGray1">#96a2b5c7</color>
+    <color name="colorWhiteGray3">#30a2b5c7</color>
+    <color name="colorProgress">#E99543</color>
+
+    <color name="colorConservation1">#FFBF80</color>
+    <color name="colorConservation2">#7DAC93</color>
+    <color name="colorConservation3">#6767FF</color>
+
+    <color name="colorCompareThisYear">#8bd643</color>
+    <color name="colorComparePreviousYear">#ff0000</color>
+    <color name="colorCompareUtility">#63cfe0</color>
+    <color name="colorCompareZip">#0175a9</color>
+
+
+    <color name="colorUsageWithin">#89BF6E</color>
+    <color name="colorUsageOver">#CE5F48</color>
+    <color name="colorUsageAllocation">#588AD6</color>
+
+    <color name="commonBackgroundGradient1">#0075A9</color>
+    <color name="commonBackgroundGradient2">#27CFDA</color>
+    <color name="commonLabelTextColor">#999999</color>
+    <color name="list1">#bdd2e5</color>
+    <color name="list2">#d6e8f6</color>
+    <color name="listText">#666a6f</color>
+    <color name="vendorListFirstBackground">#c2d0dd</color>
+    <color name="vendorListSecondBackground">#9ec5e6</color>
+    <color name="vendorListDetailText">#94979a</color>
+
+
+</resources>

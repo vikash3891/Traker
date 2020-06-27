@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">Traker</string>
+    <string name="map_api_key">AIzaSyDuGCWbvlfNSm3fVufhWQ72NhQdyZA1uFE</string>
+
+
+    <string name="notification_text">Tracking, tap to cancel</string>
+    <string name="transport_id" translatable="false">123</string>
+    <string name="firebase_path" translatable="false">locations</string>
+    <string name="firebase_email" translatable="false">shukla.vikash38@gmail.com</string>
+    <string name="firebase_password" translatable="false">Demo@12345</string>
+
+    <!--Login-->
+    <string name="login_title">Hey There, Welcome to</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="login">Sign In</string>
+    <string name="email_address">Email</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="register_now">Register Now</string>
+    <string name="pay_bill">Pay Bill</string>
+    <string name="connect_with_utility">Connect with Agency</string>
+    <string name="powered_by">Powered by</string>
+    <string name="usage_notification">Usage Notification</string>
+
+    <!--Forgot Password-->
+    <string name="step1">Step 1</string>
+    <string name="step2">Step 2</string>
+    <string name="step3">Step 3</string>
+    <string name="validate_email">Please validate your Email</string>
+    <string name="change_password_header">Please enter new password and confirm it.</string>
+    <string name="submit">Submit</string>
+    <string name="update">Update</string>
+    <string name="security_answer">Security Answer</string>
+    <string name="question_eg">What was the name of your elementary / primary school?</string>
+    <string name="answer_security_ques">Please answer security questions to verify your identity.</string>
+
+    <!--Register User-->
+    <string name="registration_title">Registration</string>
+    <string name="registration_title_new">Create your Account</string>
+    <string name="mandatory">Mandatory</string>
+    <string name="confirm_pass">Confirm Password</string>
+
+    <string name="loading">Loading…</string>
+    <string name="internet">Please Check Internet Connection</string>
+
+
+     <string name="password_validation_message">Password must be atleast 8 characters(1 special letter, 1 number, 1 capital letter.</string>
+    <string name="error_message_enter_email">Please enter Email</string>
+
+
+    <string name="name">Name</string>
+    <string name="mobile_number">Phone Number</string>
+    <string name="contactus_email">Email</string>
+    <string name="country">Country</string>
+    <string name="referral_code">Referral Code (optional)</string>
+
+    <string name="sign_up">Don\'t have a account? Sign Up </string>
+    <string name="privacy_plicy_terms_conditions">Privacy Policy | Terms and Conditions</string>
+    <string name="username">Username</string>
+
+    <!--<string name="_1430">10:10 AM</string>-->
+    <string name="status">Status</string>
+    <string name="for_any_change_comments_related_to_this_appointment_please_contact_your_health_manager">For any change/comments related to this appointment, please contact your health manager.</string>
+    <string name="login_as">Login as</string>
+    <string name="add_more_driver"><u>+Add more Driver</u></string>
+    <!--<string name="_2121_mayur_vihar_89_delhi_india">2121 Mayur Vihar, 89 Delhi, India</string>
+    <string name="_91_000_0000_000">+91 000 0000 000</string>
+    <string name="raman_singh">Raman Singh</string>-->
+
+    <string name="offline">Offline</string>
+    <string name="need_location">Enable GPS SERVICE</string>
+    <string name="location_content">This app wants to change your device settings use GPS,Wi-Fi and cell networks for your location</string>
+
+</resources>
