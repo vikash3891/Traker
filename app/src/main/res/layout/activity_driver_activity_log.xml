@@ -30,6 +30,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_50" />
 
+            <View
+                android:id="@+id/showList"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_100"
+                android:layout_marginTop="@dimen/dp_70"
+                android:background="@color/colorWhite" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

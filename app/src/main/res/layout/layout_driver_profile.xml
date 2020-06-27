@@ -85,7 +85,7 @@
                     android:layout_height="150dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:background="@drawable/drawable_round_corner" />
+                    android:background="@drawable/ic_no_image" />
 
                 <TextView
                     android:id="@+id/driverName"
