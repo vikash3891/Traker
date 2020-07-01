@@ -9,7 +9,6 @@ object AppPrefences {
 
     private val PREFS_FILE_NAME = "Trackle"
     private val DeviceId = "deviceId"
-    private val USERID = "userid"
     private val WakeUpStatus = "wakeup"
     private val LanguageSelect = "language"
     private val TapPosition = "pos"
@@ -60,21 +59,6 @@ object AppPrefences {
         )
         val editor = prefs.edit()
         editor.putBoolean(Login, data)
-        editor.commit()
-    }
-
-
-    fun getUserid(ctx: Context): String? {
-        return ctx.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
-            .getString(USERID, "")
-    }
-
-    fun setUserId(ctx: Context, data: String) {
-        val prefs = ctx.getSharedPreferences(
-            PREFS_FILE_NAME, Context.MODE_PRIVATE
-        )
-        val editor = prefs.edit()
-        editor.putString(USERID, data)
         editor.commit()
     }
 

@@ -31,27 +31,38 @@ class RegistrationActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
 
+        try {
+            if (intent != null && intent.hasExtra(Constants.DRIVER_ID)) {
+                user_id = intent.getStringExtra(Constants.DRIVER_ID).toString()
+                name = intent.getStringExtra(Constants.DRIVER_NAME).toString()
+                phone = intent.getStringExtra(Constants.PHONE).toString()
+                details = intent.getStringExtra(Constants.DETAILS).toString()
+                if (intent.getStringExtra(Constants.PASSWORD) != null)
+                    password = intent.getStringExtra(Constants.PASSWORD).toString()
+                btnSubmitRegister.text = "Save"
+            }
 
-
-        if (intent != null && intent.hasExtra(Constants.DRIVER_ID)) {
-            user_id = intent.getStringExtra(Constants.DRIVER_ID).toString()
-            name = intent.getStringExtra(Constants.DRIVER_NAME).toString()
-            phone = intent.getStringExtra(Constants.PHONE).toString()
-            details = intent.getStringExtra(Constants.DETAILS).toString()
-            password = intent.getStringExtra(Constants.PASSWORD).toString()
-            btnSubmitRegister.text = "Save"
+            clickPerform()
+            updateUI()
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
-
-        clickPerform()
-        updateUI()
 
     }
 
     private fun updateUI() {
-        editName.setText(name)
-        editMobileNumber.setText(phone)
-        editDriverDetails.setText(details)
-        editPassword.setText(password)
+        try {
+            if (name != null)
+                editName.setText(name)
+            if (phone != null)
+                editMobileNumber.setText(phone)
+            if (details != null)
+                editDriverDetails.setText(details)
+            if (password != null)
+                editPassword.setText(password)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     override fun onResume() {

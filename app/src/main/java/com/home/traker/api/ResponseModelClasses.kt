@@ -3,6 +3,7 @@ package com.home.traker.api
 import com.home.traker.model.DriverVendorListModel
 import com.home.traker.model.ListAttendanceModel
 import com.home.traker.model.ListItemModel
+import com.home.traker.model.TrackDriverModel
 
 object ResponseModelClasses {
 
@@ -30,6 +31,17 @@ object ResponseModelClasses {
         )
     }
 
+    /*-------Login-------*/
+    data class PunchModel(
+        val status: String,
+        val message: String,
+        val data: ArrayList<TableData1>
+    ) {
+        data class TableData1(
+            val attendance_id: String
+        )
+    }
+
     /*-------Driver-------*/
     data class DriverAttendanceResponseModel(
         val status: String,
@@ -49,6 +61,13 @@ object ResponseModelClasses {
         val status: String,
         val message: String,
         val data: ArrayList<ListItemModel>
+    )
+
+    /*-------Login-------*/
+    data class TrackDriverResponseModel(
+        val status: String,
+        val message: String,
+        val data: ArrayList<TrackDriverModel>
     )
 
 }

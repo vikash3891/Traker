@@ -131,11 +131,7 @@ class LoginActivity : BaseActivity() {
                             if (response.body()!!.status == "0") {
                                 showSuccessPopup(response.body()!!.message)
                             } else {
-                                /*AppPrefences.setLoginUserInfo(
-                                    this@LoginActivity,
-                                    response.body()!!.data
-                                )
-*/
+
                                 AppPrefences.setLogin(this@LoginActivity, true)
                                 AppPrefences.setRememberMe(this@LoginActivity, true)
                                 AppPrefences.setUserID(

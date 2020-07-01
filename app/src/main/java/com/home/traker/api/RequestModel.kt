@@ -69,18 +69,52 @@ object RequestModel {
         return map;
     }
 
-    /*-------Registration-------*/
+    /*-------PunchInOu-------*/
     fun PunchInOuRequestModel(
+        isChecked: Boolean,
         user_id: String,
         current_date: String,
         in_time: String,
-        out_time: String
+        in_lat: String,
+        in_long: String
     ): Map<String, String> {
         var map = HashMap<String, String>()
         map.put(Constants.USER_NAME, user_id)
         map.put(Constants.CURRENT_DATE, current_date)
-        map.put(Constants.IN_TIME, in_time)
-        map.put(Constants.OUT_TIME, out_time)
+
+        if (isChecked) {
+            map.put(Constants.IN_TIME, in_time)
+            map.put(Constants.IN_LAT, in_lat)
+            map.put(Constants.IN_LONG, in_long)
+        } else {
+            map.put(Constants.OUT_TIME, in_time)
+            map.put(Constants.OUT_LAT, in_lat)
+            map.put(Constants.OUT_LONG, in_long)
+        }
+
+        Log.d("Vendor Reg Request: ", "" + Gson().toJson(map))
+        return map;
+    }
+
+    /*-------PunchInOu-------*/
+    /*attendance_id : 5
+lat : 28.6216672
+lang : 77.368461
+track_date : 2020-07-01 14:04:00
+User_ID :  3*/
+    fun LocationUpdateRequestModel(
+        attendance_id: String,
+        lat: String,
+        lang: String,
+        track_date: String,
+        User_ID: String
+    ): Map<String, String> {
+        var map = HashMap<String, String>()
+        map.put(Constants.ATTENDANCE_ID, attendance_id)
+        map.put(Constants.LAT, lat)
+        map.put(Constants.LONG, lang)
+        map.put(Constants.TRACK_DATE, track_date)
+        map.put(Constants.USER_NAME, User_ID)
 
         Log.d("Vendor Reg Request: ", "" + Gson().toJson(map))
         return map;

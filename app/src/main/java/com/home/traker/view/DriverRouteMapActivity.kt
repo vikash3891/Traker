@@ -14,6 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.home.traker.helper.GoogleMapHelper
 import com.home.traker.helper.MarkerAnimationHelper
 import com.home.traker.helper.UiHelper
@@ -25,13 +26,22 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.firebase.FirebaseApp
 import com.home.traker.R
+import com.home.traker.api.ApiClient
+import com.home.traker.api.ApiInterface
+import com.home.traker.api.ResponseModelClasses
+import com.home.traker.base.BaseActivity
 import com.home.traker.helper.FireBaseHelper
+import com.home.traker.model.TrackDriverModel
 import com.home.traker.navigators.IPositiveNegativeListener
 import com.home.traker.navigators.LatLngInterpolator
 import com.home.traker.utils.Constants
+import com.home.traker.utils.Utils
 import kotlinx.android.synthetic.main.activity_attendance_list.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class DriverRouteMapActivity : AppCompatActivity(), OnMapReadyCallback,
+class DriverRouteMapActivity : BaseActivity(), OnMapReadyCallback,
     GoogleMap.OnPolylineClickListener, GoogleMap.OnPolygonClickListener {
     override fun onPolylineClick(p0: Polyline?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -59,12 +69,17 @@ class DriverRouteMapActivity : AppCompatActivity(), OnMapReadyCallback,
     private var driverLatLong: LatLng? = null
     private var isMapView: Boolean = false
 
+
+    var foodsList = ArrayList<TrackDriverModel>()
+    var attendance_id = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         try {
             setContentView(R.layout.activity_attendance_list)
 
             if (intent != null && intent.hasExtra(Constants.LAT)) {
+                //attendance_id = intent.getStringExtra(Constants.ATTENDANCE_ID)
                 driverLatLong = LatLng(
                     intent.getStringExtra(Constants.LAT).toDouble(),
                     intent.getStringExtra(Constants.LONG).toDouble()
@@ -79,6 +94,8 @@ class DriverRouteMapActivity : AppCompatActivity(), OnMapReadyCallback,
             layoutList.visibility = View.GONE
 
             FirebaseApp.initializeApp(this)
+
+            getDriverRouteAPI("5")
 
             val mapFragment: SupportMapFragment =
                 supportFragmentManager.findFragmentById(R.id.supportMap) as SupportMapFragment
@@ -172,19 +189,7 @@ class DriverRouteMapActivity : AppCompatActivity(), OnMapReadyCallback,
                             showOrAnimateMarker(latLng)
                         }
                     } else {
-                        val polyline1: Polyline = googleMap.addPolyline(
-                            PolylineOptions()
-                                .clickable(true)
-                                .add(
-                                    LatLng(28.6139, 77.2090),
-                                    LatLng(28.5355, 77.3910),
-                                    LatLng(28.4595, 77.0266),
-                                    LatLng(28.7892, 77.5161)
-                                )
-                        )
-
-                        animateCamera(LatLng(28.6139, 77.2090))
-                        showOrAnimateMarker(LatLng(28.6139, 77.2090))
+                        loadList(foodsList)
                     }
                 }
             }
@@ -283,4 +288,107 @@ class DriverRouteMapActivity : AppCompatActivity(), OnMapReadyCallback,
         polyline.color = COLOR_BLACK_ARGB
         polyline.jointType = JointType.ROUND
     }
+
+    private fun getDriverRouteAPI(driverID: String) = if (Utils.isConnected(this)) {
+        showDialog()
+        try {
+            val apiService =
+                ApiClient.getClient(Constants.DRIVER_BASE_URL).create(ApiInterface::class.java)
+            val call: Call<ResponseModelClasses.TrackDriverResponseModel> =
+                apiService.getDriverTrackList(driverID)//driverID
+            call.enqueue(object : Callback<ResponseModelClasses.TrackDriverResponseModel> {
+                override fun onResponse(
+                    call: Call<ResponseModelClasses.TrackDriverResponseModel>,
+                    response: Response<ResponseModelClasses.TrackDriverResponseModel>
+                ) {
+                    try {
+                        dismissDialog()
+                        Log.d("DriverRouteList:", response.body()!!.data.toString())
+                        if (response.body() != null) {
+                            if (response.body()!!.status == "0") {
+                                showSuccessPopup(response.body()!!.message)
+                            } else {
+                                foodsList = response.body()!!.data
+                                //loadList(foodsList)
+                            }
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+
+                override fun onFailure(
+                    call: Call<ResponseModelClasses.TrackDriverResponseModel>,
+                    t: Throwable
+                ) {
+                    Log.d("Throws:", t.message.toString())
+                    dismissDialog()
+                }
+            })
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+            dismissDialog()
+        }
+
+    } else {
+        dismissDialog()
+        showToast(getString(R.string.internet))
+    }
+
+    private fun loadList(data: ArrayList<TrackDriverModel>) {
+        try {
+
+            /*List<LatLng> points = decodePoly(_path); // list of latlng
+for (int i = 0; i < points.size() - 1; i++) {
+  LatLng src = points.get(i);
+  LatLng dest = points.get(i + 1);
+
+  // mMap is the Map Object
+  Polyline line = mMap.addPolyline(
+    new PolylineOptions().add(
+      new LatLng(src.latitude, src.longitude),
+      new LatLng(dest.latitude,dest.longitude)
+    ).width(2).color(Color.BLUE).geodesic(true)
+  );
+}*/
+            for (i in 0 until data.size - 1) {
+
+                var src = LatLng(
+                    data[i].lat!!.toDouble(),
+                    data[i].lang!!.toDouble()
+                )
+                var dest = LatLng(
+                    data[i + 1].lat!!.toDouble(),
+                    data[i + 1].lang!!.toDouble()
+                )
+                val polyline1: Polyline = googleMap.addPolyline(
+                    PolylineOptions()
+                        .clickable(true)
+                        .add(
+                            LatLng(src.latitude, src.longitude),
+                            LatLng(dest.latitude, dest.longitude)
+                        )
+                        .color(ContextCompat.getColor(this, R.color.colorAccent))
+                )
+            }
+
+            animateCamera(
+                LatLng(
+                    data[data.size-1].lat!!.toDouble(),
+                    data[data.size-1].lang!!.toDouble()
+                )
+            )
+            showOrAnimateMarker(
+                LatLng(
+                    data[data.size-1].lat!!.toDouble(),
+                    data[data.size-1].lang!!.toDouble()
+                )
+            )
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+
 }

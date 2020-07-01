@@ -81,6 +81,8 @@ class ForegroundService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             startForeground(foregroundNotificationId, foregroundNotification)
+
+
         }
         return START_STICKY
     }

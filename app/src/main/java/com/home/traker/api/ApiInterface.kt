@@ -29,13 +29,16 @@ interface ApiInterface {
     @GET(Constants.DRIVER_LIST)
     fun getDriverList(): Call<ResponseModelClasses.DriverListResponseModel>
 
-    @GET(Constants.DRIVER_ATTENDANCE_LIST)
-    fun getDriverAttendanceList(): Call<ResponseModelClasses.DriverAttendanceResponseModel>
+    @GET(Constants.DRIVER_ATTENDANCE_LIST + "/{DriverID}")
+    fun getDriverAttendanceList(@Path("DriverID") id: String): Call<ResponseModelClasses.DriverAttendanceResponseModel>
 
     //+ "/{DriverID}"
     //@Path("DriverID") id: String
-    @GET(Constants.DRIVER_VENDOR_LIST)
-    fun getVendorList(): Call<ResponseModelClasses.VendorListResponseModel>
+    @GET(Constants.DRIVER_VENDOR_LIST + "/{DriverID}")
+    fun getVendorList(@Path("DriverID") id: String): Call<ResponseModelClasses.VendorListResponseModel>
+
+    @GET(Constants.TRACK_USER_LIST + "/{AttendanceID}")
+    fun getDriverTrackList(@Path("AttendanceID") id: String): Call<ResponseModelClasses.TrackDriverResponseModel>
 
     @GET(Constants.DRIVER_LIST + "/{DriverID}")
     fun getDriverProfile(@Path("DriverID") id: String): Call<ResponseModelClasses.DriverListResponseModel>
@@ -46,6 +49,6 @@ interface ApiInterface {
 
     @FormUrlEncoded
     @POST(Constants.DRIVER_ATTENDANCE_LIST)
-    fun setPunchInOut(@FieldMap fieldMap: Map<String, String>): Call<ResponseModelClasses.LoginResponseModel>
+    fun setPunchInOut(@FieldMap fieldMap: Map<String, String>): Call<ResponseModelClasses.PunchModel>
 
 }

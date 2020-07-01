@@ -50,8 +50,9 @@ class DriverProfileActivity : BaseActivity() {
 
             try {
                 var intent1 = Intent(this, ListVendorRouteActivity::class.java)
-                intent1.putExtra(Constants.DRIVER_ID, driverDetails.id)
+                intent1.putExtra(Constants.DRIVER_ID, driverDetails.user_id)
                 intent1.putExtra(Constants.DRIVER_NAME, driverDetails.drive_name)
+                intent1.putExtra(Constants.ATTENDANCE_ID, driverDetails.attendance_id)
                 startActivity(intent1)
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -59,15 +60,18 @@ class DriverProfileActivity : BaseActivity() {
 
         }
         editDriver.setOnClickListener {
-            //startActivity(Intent(this, RegistrationActivity::class.java))
 
-            var intent1 = Intent(this, RegistrationActivity::class.java)
-            intent1.putExtra(Constants.DRIVER_ID, driverDetails.id)
-            intent1.putExtra(Constants.DRIVER_NAME, driverDetails.drive_name)
-            intent1.putExtra(Constants.PHONE, driverDetails.phone)
-            intent1.putExtra(Constants.DETAILS, driverDetails.details)
-            intent1.putExtra(Constants.PASSWORD, driverDetails.pasword)
-            startActivity(intent1)
+            try {
+                var intent1 = Intent(this, RegistrationActivity::class.java)
+                intent1.putExtra(Constants.DRIVER_ID, driverDetails.id)
+                intent1.putExtra(Constants.DRIVER_NAME, driverDetails.drive_name)
+                intent1.putExtra(Constants.PHONE, driverDetails.phone)
+                intent1.putExtra(Constants.DETAILS, driverDetails.details)
+                intent1.putExtra(Constants.PASSWORD, driverDetails.pasword)
+                startActivity(intent1)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 
@@ -85,7 +89,7 @@ class DriverProfileActivity : BaseActivity() {
                 ) {
                     try {
                         dismissDialog()
-                        Log.d("Response:", response.body().toString())
+                        Log.d("Response:", response.body()!!.data[0].attendance_id.toString())
                         if (response.body() != null) {
                             if (response.body()!!.status == "0") {
                                 showSuccessPopup(response.body()!!.message)

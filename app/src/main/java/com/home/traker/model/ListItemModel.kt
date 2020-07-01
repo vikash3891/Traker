@@ -4,6 +4,7 @@ class ListItemModel {
 
     var id: String? = null
     var user_id: String? = null
+    var attendance_id: String? = null
     var drive_name: String? = null
     var phone: String? = null
     var details: String? = null
@@ -16,6 +17,7 @@ class ListItemModel {
     constructor(
         id: String,
         user_id: String,
+        attendance_id: String,
         drive_name: String,
         phone: String,
         details: String,
@@ -28,10 +30,14 @@ class ListItemModel {
     ) {
         this.id = id
         this.user_id = user_id
+        this.attendance_id = attendance_id
         this.drive_name = drive_name
         this.phone = phone
         this.details = details
-        this.pasword = pasword
+        if (pasword != null)
+            this.pasword = pasword
+        else
+            this.pasword = ""
         this.image = image
         this.address = address
         this.lat = lat
